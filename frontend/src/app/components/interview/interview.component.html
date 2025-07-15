@@ -1,0 +1,21 @@
+<div><p>Booleana GPT</p></div><br><br>
+<div class="chat-container">
+  <div *ngFor="let message of messages" class="message {{ message.sender }}">
+    <div class="content">{{ message.content }}</div>
+    <div class="timestamp">{{ message.timestamp | date:'shortTime' }}</div>
+  </div>
+</div>
+<div class="input-area">
+  <textarea 
+    [formControl]="userInputControl"
+    placeholder="Escribe tu pregunta..."
+    (keydown.enter)="sendMessage()"
+  ></textarea>
+  
+  <button 
+    (click)="sendMessage()" 
+    [disabled]="isLoading || !userInputControl.value?.trim()"
+  >
+    {{ isLoading ? 'Enviando...' : 'Enviar' }}
+  </button>
+</div>
