@@ -1,21 +1,73 @@
-<div><p>Booleana GPT</p></div><br><br>
-<div class="chat-container">
-  <div *ngFor="let message of messages" class="message {{ message.sender }}">
-    <div class="content">{{ message.content }}</div>
-    <div class="timestamp">{{ message.timestamp | date:'shortTime' }}</div>
-  </div>
-</div>
-<div class="input-area">
-  <textarea 
-    [formControl]="userInputControl"
-    placeholder="Escribe tu pregunta..."
-    (keydown.enter)="sendMessage()"
-  ></textarea>
-  
-  <button 
-    (click)="sendMessage()" 
-    [disabled]="isLoading || !userInputControl.value?.trim()"
-  >
-    {{ isLoading ? 'Enviando...' : 'Enviar' }}
-  </button>
+<div class="interview-container">
+  <mat-card class="header-card">
+    <div class="header-content">
+      <mat-icon class="avatar-lg ai-avatar">face_2</mat-icon>
+      <div class="header-text">
+        <h4 class="primary-text">
+          Booleana 
+        </h4>
+        <p class="secondary-text">
+          Voy a evualarte para el role de <span>"Staff Software Engineer"</span> 
+        </p>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="chat-card">
+    <div class="chat-container">
+      <div *ngFor="let message of messages" class="message-wrapper">
+        <div class="message {{ message.sender }}">
+          <mat-icon
+            *ngIf="message.sender === 'ai'"
+            class="avatar-sm message-avatar ai-avatar">
+            smart_toy
+          </mat-icon>
+          <mat-icon
+            *ngIf="message.sender === 'user'"
+            class="avatar-sm message-avatar user-avatar">
+            person
+          </mat-icon>
+
+          <div class="message-content">
+            <p class="message-text">
+              {{ message.content }}
+            </p>
+            <small class="timestamp secondary-text">
+              {{ message.timestamp | date:'shortTime' }}
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="loading-indicator">
+        <mat-spinner diameter="24"></mat-spinner>
+        <p class="secondary-text">
+          Booleana está pensando...
+        </p>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="input-card">
+    <div class="input-area">
+      <mat-form-field class="message-input" appearance="outline">
+        <mat-label>Escribe tu respuesta...</mat-label>
+        <textarea
+          matInput
+          [formControl]="userInputControl"
+          rows="3"
+          (keydown.enter)="sendMessage()">
+        </textarea>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="sendMessage()"
+        [disabled]="isLoading || !userInputControl.value?.trim()"
+        class="send-button">
+        {{ isLoading ? 'Enviando...' : 'Enviar' }}
+      </button>
+    </div>
+  </mat-card>
 </div>

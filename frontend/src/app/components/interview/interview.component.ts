@@ -2,8 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { InterviewService } from '../../services/interview.service';
 import { Message } from '../../models/message.model';
 import { firstValueFrom } from 'rxjs';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-interview',
@@ -11,7 +17,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   imports: [
     DatePipe,
     ReactiveFormsModule,
-    NgFor  
+    NgFor,
+    NgIf,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatIconModule
   ],
   templateUrl: './interview.component.html',
   styleUrls: ['./interview.component.scss']
@@ -70,7 +83,7 @@ export class InterviewComponent implements OnInit {
             timestamp: new Date()
           });
         },
-        error: (err) => {
+        error: () => {
           this.messages.push({
             content: 'Error al procesar tu pregunta',
             sender: 'ai',
