@@ -1,16 +1,14 @@
-import { initializeApp, getFirestore, Timestamp, config } from "../deps.ts";
+import { initializeApp, getFirestore, Timestamp, config, credential } from "../deps.ts";
 
 const env = config();
 
-const firebaseConfig = {
-  credential: {
+const app = initializeApp({
+  credential: credential.cert({
     projectId: env.FIREBASE_PROJECT_ID,
     clientEmail: env.FIREBASE_CLIENT_EMAIL,
     privateKey: env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  },
-};
-
-const app = initializeApp(firebaseConfig);
+  }),
+});
 const db = getFirestore(app);
 
 interface BooleanaSession {

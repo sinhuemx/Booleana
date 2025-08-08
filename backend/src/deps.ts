@@ -10,8 +10,10 @@ export {
 export { OpenAI } from "https://deno.land/x/openai@1.4.0/mod.ts";
 
 // Firebase
-export { initializeApp } from "https://cdn.skypack.dev/firebase-admin@11.0.0/app";
-export { getFirestore, Timestamp } from "https://cdn.skypack.dev/firebase-admin@11.0.0/firestore";
+import admin from "firebase-admin";
+export const credential = admin.credential;
+export { initializeApp } from "firebase-admin/app";
+export { getFirestore, Timestamp } from "firebase-admin/firestore";
 
 // Dotenv
 export { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
