@@ -4,6 +4,10 @@ module.exports = withModuleFederationPlugin({
 
   name: 'frontend',
 
+  remotes: {
+    "mfeReact": "mfeReact@http://localhost:4201/remoteEntry.js",
+  },
+
   exposes: {
     './Component': './src/app/app.component.ts',
   },

@@ -35,10 +35,7 @@
 							"src/styles.scss"
 						],
 						"scripts": [],
-						"outputMode": "server",
-						"ssr": {
-							"entry": "src/server.ts"
-						},
+						
 						"main": "src/main.ts",
 						"extraWebpackConfig": "webpack.config.js",
 						"commonChunk": false
