@@ -60,7 +60,10 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true
+							"sourceMap": true,
+							"allowedCommonJsDependencies": [
+								"@angular-architects/module-federation"
+							]
 						}
 					},
 					"defaultConfiguration": "production"

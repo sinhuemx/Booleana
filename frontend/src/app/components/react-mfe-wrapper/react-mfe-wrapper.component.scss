@@ -1,1 +1,8 @@
-/* Add any specific styles for the wrapper here */
+:host {
+  display: block;
+  min-height: 400px;
+  width: 100%;
+  border: 2px dashed #ccc;
+  padding: 1rem;
+  box-sizing: border-box;
+}

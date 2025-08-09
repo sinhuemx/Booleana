@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
 
-const Login: React.FC = () => {
+interface LoginProps {
+  onLoginSuccess: (username: string) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     console.log('Login attempt:', { username, password });
-    // In a real application, you would send these credentials to a backend for authentication.
-    // For now, we'll just simulate a successful login.
-    alert('Login successful! (Simulated)');
-    // You might want to emit an event here to notify the host (Angular) application
-    // that the login was successful and pass user data.
+    // Simulate a successful login
+    onLoginSuccess(username);
   };
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '400px', margin: '20px auto' }}>
-      <h2>Login</h2>
+      <h2>Login Component</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
           <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>Username:</label>
@@ -48,9 +50,17 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+// Mount function to be used by the shell application
+export const mount = (element: HTMLElement) => {
+  const root = ReactDOM.createRoot(element);
+  root.render(
+    <Login onLoginSuccess={(username) => {
+      // Dispatch a custom event that the Angular shell can listen to
+      element.dispatchEvent(new CustomEvent('mfeLoginSuccess', {
+        detail: { username: username, success: true }
+      }));
+    }} />
+  );
+};
 
-export function mount(element: HTMLElement) {
-  const root = (window as any).ReactDOM.createRoot(element);
-  root.render(<Login />);
-}
+export default Login;

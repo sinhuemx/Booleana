@@ -11,7 +11,8 @@ fi
 echo "Iniciando Frontend y Backend en modo desarrollo..."
 
 concurrently \
-    --names "BACKEND,FRONTEND" \
-    --prefix-colors "red,blue" \
+    --names "BACKEND,FRONTEND,MFE-REACT" \
+    --prefix-colors "red,blue,green" \
     "cd backend && deno task start" \
-    "cd frontend && npm start"
+    "cd frontend && npm start" \
+    "cd mfe-react && npm start"

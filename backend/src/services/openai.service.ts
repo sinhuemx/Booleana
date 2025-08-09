@@ -20,6 +20,6 @@ export async function generateResponse(
     return response.choices[0].message.content.trim();
   } catch (error) {
     console.error("Seeker: OpenAI API error:", error);
-    return "Lo siento, estoy teniendo dificultades técnicas. ¿Podrías repetir tu última pregunta?";
+    return "Te responde Deno...mientras me conectaran un LLM :)";
   }
 }

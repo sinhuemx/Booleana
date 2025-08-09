@@ -25,14 +25,14 @@ yarn-error.log*
 /frontend/tsconfig.server.json
 
 # React specific
-/mfe-react/node_modules/
-/mfe-react/build/
-/mfe-react/coverage/
-/mfe-react/.env
-/mfe-react/.env.local
-/mfe-react/.env.development.local
-/mfe-react/.env.test.local
-/mfe-react/.env.production.local
+/react/node_modules/
+/react/build/
+/react/coverage/
+/react/.env
+/react/.env.local
+/react/.env.development.local
+/react/.env.test.local
+/react/.env.production.local
 
 # Deno specific (for backend)
 /backend/deno.lock

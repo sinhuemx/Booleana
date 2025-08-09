@@ -12,4 +12,7 @@ apiRouter
   .post("/session", startSession)
   .post("/interview", handleMessage)
   .post("/session/:id/end", endSession)
-  .get("/session/:id", getSession);
+  .get("/session/:id", getSession)
+  .get("/status", (context) => {
+    context.response.body = { status: "Backend is running", service: "Booleana AI" };
+  });

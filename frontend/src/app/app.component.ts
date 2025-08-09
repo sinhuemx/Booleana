@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { InterviewComponent } from './components/interview/interview.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [InterviewComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true
